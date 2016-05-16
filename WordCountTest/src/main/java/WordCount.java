@@ -81,7 +81,7 @@ public class WordCount {
 
 		Configuration conf = new Configuration();
 
-		Job job = new Job(conf, "WordCnt");
+		Job job = new Job(conf, "WordCount");
 		job.setJarByClass(WordCount.class);
 		job.setMapperClass(MyMapper.class);
 		job.setReducerClass(MyReducer.class);
