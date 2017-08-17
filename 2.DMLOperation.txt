@@ -1,0 +1,13 @@
+####로컬파일로딩
+hive> LOAD DATA LOCAL INPATH '/home/hadoop/hive/examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
+
+####HDFS 로딩 (kv2.txt 파일을 hdfs 로 put 을 먼저 실행)
+    $ hadoop fs -mkdir /input 
+    $ hadoop fs -put /home/hadoop/hive/examples/files/kv2.txt  /input/.
+hive> LOAD DATA INPATH '/input/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
+
+####Partitioning
+hive> LOAD DATA LOCAL INPATH '/home/hadoop/hive/examples/files/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
+hive> LOAD DATA LOCAL INPATH './examples/files/kv3.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');
+
+LOAD DATA LOCAL INPATH '/home/hadoop/hive/examples/files/kv3.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-08');

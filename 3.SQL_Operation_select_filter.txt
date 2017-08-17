@@ -1,0 +1,8 @@
+hive> SELECT a.foo FROM invites a WHERE a.ds='2008-08-15';
+hive> INSERT OVERWRITE DIRECTORY '/tmp/hdfs_out' SELECT a.* FROM invites a WHERE a.ds='2008-08-15';
+hive> INSERT OVERWRITE LOCAL DIRECTORY '/home/hadoop/local_out' SELECT a.* FROM pokes a;
+
+hive> CREATE TABLE events (bar STRING, foo INT); 
+hive> INSERT OVERWRITE LOCAL DIRECTORY '/home/hadoop/reg_3' SELECT a.* FROM events a;
+hive> INSERT OVERWRITE DIRECTORY '/tmp/reg_5' SELECT COUNT(*) FROM invites a WHERE a.ds='2008-08-15';
+hive> INSERT OVERWRITE DIRECTORY '/tmp/reg_5' SELECT a.foo, a.bar FROM invites a;

@@ -1,0 +1,12 @@
+hive> CREATE TABLE pokes (foo INT, bar STRING); 
+hive> CREATE TABLE invites (foo INT, bar STRING) PARTITIONED BY (ds STRING); 
+hive> SHOW TABLES;
+hive> SHOW TABLES '.*s';
+hive> DESCRIBE invites;
+hive> DROP TABLE pokes;
+
+hive> ALTER TABLE pokes ADD COLUMNS (new_col INT);
+hive> ALTER TABLE invites 
+ADD COLUMNS (new_col2 INT COMMENT 'a comment');
+hive> CREATE TABLE rating (userid STRING, movieid STRING, rating INT) 
+ROW  FORMAT DELIMITED FIELDS TERMINATED BY ',' STORED AS TEXTFILE;
