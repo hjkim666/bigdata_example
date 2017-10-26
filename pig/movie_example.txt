@@ -1,0 +1,15 @@
+movies = LOAD '/test/movie_data.csv' 
+USING PigStorage(',') 
+as (id:int,name:chararray,year:int,rating:double,duration:int);
+ 
+1994년에 개봉된 영화는? 
+movie1994 = FILTER movies BY year == 1994;
+ 
+각 연도별 개봉된 영화는?  
+movie_year = GROUP movies BY year;
+ 
+결과를 파일로 저장하시오
+store movie_year into '/user/hadoop/movies_result';
+
+평점이 3.0 이하인 영화는?
+movie2 = FILTER movies BY rating <  3.0;
