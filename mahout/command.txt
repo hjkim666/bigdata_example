@@ -1,0 +1,1 @@
+mahout  recommenditembased   --input  u.data   --output   output/itemcos --similarityClassname SIMILARITY_PEARSON_CORRELATION   --numRecommendations  5  
