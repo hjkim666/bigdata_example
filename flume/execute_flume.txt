@@ -1,0 +1,3 @@
+cd bin 
+bin/flume-ng agent --conf-file ./conf/flume-tail.conf --name agent -Dflume.root.logger=INFO,console
+bin/flume-ng agent --conf-file ./flume_tweet.conf --name TwitterAgent -Dflume.root.logger=INFO,console

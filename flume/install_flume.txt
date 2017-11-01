@@ -1,0 +1,50 @@
+다운로드 
+http://archive.apache.org/dist/flume/1.5.2/apache-flume-1.5.2-bin.tar.gz 
+
+
+vi .bash_profile 
+FLUME_HOME=/home/hadoop/flume
+FLUME_CONF_DIR=$FLUME_HOME/conf
+PATH=$PATH:$FLUME_HOME/bin
+
+export FLUME_HOME FLUME_CONF_DIR
+
+vi flume-tail.conf
+---------------------------------------------------
+agent.sources = s1
+agent.channels = c1
+agent.sinks = k1
+
+agent.sources.s1.type = exec
+agent.sources.s1.command = tail -F /home/hadoop/flume/test.csv
+
+agent.sources.s1.channels = c1
+
+agent.sinks.k1.type = logger
+
+agent.sinks.k1.channel = c1
+
+agent.channels.c1.type = memory
+agent.channels.c1.capacity = 100
+----------------------------------------------------                                 
+
+
+vi /home/hadoop/flume/test.csv
+hi
+
+
+cd bin 
+bin/flume-ng agent --conf-file ./conf/flume-tail.conf --name agent -Dflume.root.logger=INFO,console
+bin/flume-ng agent ?c ./conf --conf-file ./flume_tweet.conf --name TwitterAgent -Dflume.root.logger=INFO,console
+bin/flume-ng agent ?c ./conf --conf-file  conf/flume_tweet2.conf --name TwitterAgent -Dflume.root.logger=INFO,console
+
+-----------------------------------------------
+언어설정 
+vi  /etc/sysconfig/i18n 
+LANG="ko_KR.UTF-8"
+SUPPORTED="en_US.UTF-8:en_US:ko_KR.eucKR:ko_KR:ko"
+SYSFONT="lat0-sun16"
+SYSFONTACM="8859-15"
+
+source /etc/sysconfig/i18n
+locale
