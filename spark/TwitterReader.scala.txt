@@ -1,0 +1,36 @@
+package scala.edu.jaen.spark
+
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.twitter.TwitterUtils
+import org.apache.spark.streaming.{Seconds, StreamingContext}
+
+/**
+  * Created by HJKIM on 2016-02-22.
+  */
+object TwitterReader extends App{
+
+  System.setProperty("twitter4j.oauth.consumerKey", args(0))
+  System.setProperty("twitter4j.oauth.consumerSecret", args(1))
+  System.setProperty("twitter4j.oauth.accessToken", args(2))
+  System.setProperty("twitter4j.oauth.accessTokenSecret", args(3))
+
+
+  //val conf=new SparkConf().setAppName("TwitterReader").setMaster("local[*]")
+  val conf=new SparkConf().setAppName("TwitterReader")
+  val ssc = new StreamingContext(conf,Seconds(5))
+
+  val filters = Array()
+  val tweets  = TwitterUtils.createStream(ssc,None)
+
+  tweets.foreachRDD(rdd => {
+    rdd.foreach(status => {
+      println("text ==> %s".format(status.getText))
+      println("text ==> %s".format(status.getId))
+      println("retweet cnt ==> %s".format(status.getRetweetCount))
+    })
+  })
+
+  ssc.start()
+  ssc.awaitTermination()
+
+}
