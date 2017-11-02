@@ -1,0 +1,10 @@
+[First 예제]----------------------------------- 
+./spark/bin/spark-submit  --master  spark://hadoop01:8087  --class  edu.jaen.spark.First   /home/hadoop/examples/sample-uber-1.0-SNAPSHOT.jar 
+
+[Twitter 예제]-----------------------------------
+./spark/bin/spark-submit  --class  edu.jaen.spark.TwitterReader   /home/hadoop/examples/sample-uber-1.0-SNAPSHOT.jar  vOUnWTdpkNlA2Wrimj3G0zzMd d6Zh9wvBoHuK9pDQGBO5VqbxUuCOvN5GT2lm7UAnSPVAKXalUD 2905297848-HBSXlL9rp2GZVDpilLC3FRP2cvyCZn1Zjy8TgGE  ce6jS1ai8xxpKGZYBf86cfxklehI3g4qrGN3kgiQsdRe6 
+
+
+./spark/bin/spark-submit  --master spark://hadoop01:7077 --class  edu.jaen.spark.TwitterReader   /home/hadoop/examples/sample-uber-1.0-SNAPSHOT.jar  vOUnWTdpkNlA2Wrimj3G0zzMd d6Zh9wvBoHuK9pDQGBO5VqbxUuCOvN5GT2lm7UAnSPVAKXalUD 2905297848-HBSXlL9rp2GZVDpilLC3FRP2cvyCZn1Zjy8TgGE  ce6jS1ai8xxpKGZYBf86cfxklehI3g4qrGN3kgiQsdRe6 
+
+

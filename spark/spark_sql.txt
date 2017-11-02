@@ -1,0 +1,7 @@
+cd  spark/examples/src/main/resources/people.json 
+hadoop fs -put people.json  /test/.
+
+CREATE TEMPORARY TABLE  test
+USING org.apache.spark.sql.json  
+OPTIONS
+(path "/test/people.json"); 
